@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Target 3Kiosk</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- SheetJS -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="logo indosat.png" alt="Indosat Logo" class="indosat-logo">
+            <span class="header-title">3KIOSK Timor Target</span>
+        </div>
+        <div class="header-center">
+            <!-- Navigasi untuk Desktop -->
+            <nav class="nav desktop-nav">
+                <ul>
+                    <li><a href="index.html">Dashboard KPI</a></li>
+                    <li><a href="target-3kiosk.html" class="active">Target 3Kiosk</a></li>
+                    <li><a href="file-raw.html">File RAW</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <img src="logo3.png" alt="3 Logo" class="three-logo">
+            <div class="report-date-container">
+                <div class="report-text">REPORT AS OF</div>
+                <div class="report-month-year"></div>
+                <div class="report-day"></div>
+            </div>
+        </div>
+        <div class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="dashboard-container">
+            <div class="filter-sidebar card">
+                <div class="filter-group">
+                    <label for="globalSearch">Cari:</label>
+                    <input type="text" id="globalSearch" class="filter-input" placeholder="Cari...">
+                </div>
+                <div class="filter-group">
+                     <label for="idFilter">Filter by ID:</label>
+                    <select id="idFilter" class="filter-select">
+                        <option value="">Semua ID</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                     <label for="microClusterFilter">Filter by Micro Cluster:</label>
+                    <select id="microClusterFilter" class="filter-select">
+                        <option value="">Semua Micro Cluster</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                     <label for="nama3KioskFilter">Filter by Nama 3Kiosk:</label>
+                    <select id="nama3KioskFilter" class="filter-select">
+                        <option value="">Semua Nama 3Kiosk</option>
+                    </select>
+                </div>
+                <button id="resetFilters" class="filter-button">Reset Filter</button>
+            </div>
+
+            <div class="table-main-area card target-table-area">
+                <div class="card-title">Target May 2025</div>
+                <div class="file-actions">
+                    <input type="file" id="fileUpload" accept=".xlsx,.xls" style="display: none;">
+                    <button id="uploadButton" onclick="document.getElementById('fileUpload').click()">Upload Excel</button>
+                    <button id="downloadExcel">Download Excel</button>
+                </div>
+                 <div class="table-container">
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <!-- Kolom lainnya akan ditambahkan secara dinamis -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data akan diisi secara dinamis -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <!-- Firebase Firestore -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"></script>
+    <!-- Firebase Storage -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage.js"></script>
+    <!-- SheetJS -->
+    <!-- Custom JS -->
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/main.js"></script>
+
+    <!-- Legacy Firebase SDK v8 -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" nomodule></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" nomodule></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js" nomodule></script>
+    
+    <!-- Legacy JS files -->
+    <script src="js/firebase.legacy.js" nomodule></script>
+    <script src="js/main.legacy.js" nomodule></script>
+</body>
+</html> 

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard KPI</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+    <!-- SheetJS -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="logo indosat.png" alt="Indosat Logo" class="indosat-logo">
+            <span class="header-title">3KIOSK Timor by DATA BANK PBI</span>
+        </div>
+        <div class="header-center">
+            <!-- Navigasi untuk Desktop -->
+            <nav class="nav desktop-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Dashboard KPI</a></li>
+                    <li><a href="target-3kiosk.html">Target 3Kiosk</a></li>
+                    <li><a href="file-raw.html">File RAW</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <img src="logo3.png" alt="3 Logo" class="three-logo">
+            <div class="report-date-container">
+                <div class="report-text">REPORT AS OF</div>
+                <div class="report-month-year"></div>
+                <div class="report-day"></div>
+            </div>
+        </div>
+        <div class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="dashboard-container">
+            <div class="filter-sidebar card">
+                <div class="filter-group">
+                    <label for="globalSearch">Cari:</label>
+                    <input type="text" id="globalSearch" class="filter-input" placeholder="Cari...">
+                </div>
+                <div class="filter-group">
+                    <label for="idFilter">Filter by ID:</label>
+                    <select id="idFilter" class="filter-select">
+                        <option value="">Semua ID</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="microClusterFilter">Filter by Micro Cluster:</label>
+                    <select id="microClusterFilter" class="filter-select">
+                        <option value="">Semua Micro Cluster</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="nama3KioskFilter">Filter by Nama 3Kiosk:</label>
+                    <select id="nama3KioskFilter" class="filter-select">
+                        <option value="">Semua Nama 3Kiosk</option>
+                    </select>
+                </div>
+                <button id="resetFilters" class="filter-button">Reset Filter</button>
+            </div>
+
+            <div class="table-main-area card dashboard-table-area">
+                <div class="card-title">3Kiosk Performance Indicative</div>
+                <div class="file-actions">
+                    <button id="downloadExcel">Download Excel</button>
+                </div>
+                 <div class="table-container">
+                    <table id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <!-- Kolom lainnya akan ditambahkan secara dinamis -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data akan diisi secara dinamis -->
+                        </tbody>
+                    </table>
+                </div>
+                 <div class="pagination-container">
+                    <!-- Dropdown View Entries & Pagination akan ditambahkan di sini -->
+                     <label for="viewEntries">View entries:</label>
+                     <select id="viewEntries">
+                         <option value="10">10</option>
+                         <option value="25">25</option>
+                         <option value="50">50</option>
+                         <option value="100">100</option>
+                         <option value="-1">Semua</option>
+                     </select>
+                 </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modern browsers -->
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/data-transfer.js"></script>
+    
+    <!-- Legacy browsers -->
+    <script nomodule src="js/firebase.legacy.js"></script>
+    <script nomodule src="js/main.legacy.js"></script>
+</body>
+</html>
