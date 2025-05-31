@@ -39,62 +39,50 @@
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="dashboard-container">
-            <div class="filter-sidebar card">
-                <div class="filter-group">
-                    <label for="globalSearch">Cari:</label>
-                    <input type="text" id="globalSearch" class="filter-input" placeholder="Cari...">
-                </div>
-                <div class="filter-group">
-                     <label for="idFilter">Filter by ID:</label>
-                    <select id="idFilter" class="filter-select">
-                        <option value="">Semua ID</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                     <label for="kecamatanFilter">Filter by Kecamatan:</label>
-                    <select id="kecamatanFilter" class="filter-select">
-                        <option value="">Semua Kecamatan</option>
-                    </select>
-                </div>
-                <button id="resetFilters" class="filter-button">Reset Filter</button>
+    <div class="dashboard-container">
+        <div class="filter-sidebar card filter-card">
+            <div class="filter-group">
+                <label for="globalSearch">Cari:</label>
+                <input type="text" id="globalSearch" class="filter-input" placeholder="Cari...">
             </div>
+            <div class="filter-group">
+                <label for="idFilter">Filter by ID:</label>
+                <select id="idFilter" class="filter-select">
+                    <option value="">Semua ID</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="kecamatanFilter">Filter by Kecamatan:</label>
+                <select id="kecamatanFilter" class="filter-select">
+                    <option value="">Semua Kecamatan</option>
+                </select>
+            </div>
+            <button id="resetFilters" class="filter-button">Reset Filter</button>
+        </div>
 
-            <div class="table-main-area card raw-table-area">
-                <div class="card-title">Raw File MTD <span id="rawFileDate"></span></div>
-                <div class="file-actions">
-                    <input type="file" id="fileUpload" accept=".xlsx,.xls" style="display: none;">
-                    <button id="uploadButton" onclick="document.getElementById('fileUpload').click()">Upload Excel</button>
-                    <button id="downloadExcel">Download Excel</button>
-                </div>
-                 <div class="table-container">
-                    <table id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nama</th>
-                                <!-- Kolom lainnya akan ditambahkan secara dinamis -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Data akan diisi secara dinamis -->
-                        </tbody>
-                    </table>
-                </div>
-                 <div class="pagination-container">
-                    <label for="viewEntries">View entries:</label>
-                     <select id="viewEntries">
-                         <option value="10">10</option>
-                         <option value="25">25</option>
-                         <option value="50">50</option>
-                         <option value="100">100</option>
-                         <option value="-1">Semua</option>
-                     </select>
-                 </div>
+        <div class="table-main-area card raw-table-card">
+            <div class="card-title">Raw File MTD <span id="rawFileDate"></span></div>
+            <div class="file-actions">
+                <input type="file" id="fileUpload" accept=".xlsx,.xls" style="display: none;">
+                <button id="uploadButton" onclick="document.getElementById('fileUpload').click()">Upload Excel</button>
+                <button id="downloadExcel">Download Excel</button>
+            </div>
+            <div class="table-container">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <!-- Kolom lainnya akan ditambahkan secara dinamis -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data akan diisi secara dinamis -->
+                    </tbody>
+                </table>
             </div>
         </div>
-    </main>
+    </div>
 
     <!-- Modern browsers -->
     <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>

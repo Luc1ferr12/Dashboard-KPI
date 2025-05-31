@@ -167,6 +167,12 @@ export async function processExcelData(base64Content) {
 
         // Log total baris yang dibaca SheetJS
         console.log('DEBUG PROCESS: Total rows read by SheetJS (rawSheetData):', rawSheetData.length);
+        console.log('DEBUG PROCESS: First row data:', rawSheetData[0]);
+        console.log('DEBUG PROCESS: Second row data:', rawSheetData[1]);
+        console.log('DEBUG PROCESS: Third row data:', rawSheetData[2]);
+        console.log('DEBUG PROCESS: Number of columns in first row:', rawSheetData[0]?.length);
+        console.log('DEBUG PROCESS: Number of columns in second row:', rawSheetData[1]?.length);
+        console.log('DEBUG PROCESS: Number of columns in third row:', rawSheetData[2]?.length);
 
         // Tentukan headerRow1, headerRow2, dan dataRows secara manual
         let headerRow1 = [];
@@ -255,6 +261,10 @@ async function loadExcelData() {
                             fileRawActualHeaders1 = processedRaw.header1;
                             fileRawActualHeaders2 = processedRaw.header2;
                             fileRawActualData = processedRaw.dataRows;
+                            // Assign ke window object
+                            window.fileRawActualHeaders1 = fileRawActualHeaders1;
+                            window.fileRawActualHeaders2 = fileRawActualHeaders2;
+                            window.fileRawActualData = fileRawActualData;
                         }
                     })
                 ]);
@@ -317,6 +327,10 @@ async function updateDashboardDataSection(sourcePageId) {
                 fileRawActualHeaders1 = processedRaw.header1;
                 fileRawActualHeaders2 = processedRaw.header2;
                 fileRawActualData = processedRaw.dataRows;
+                // Assign ke window object
+                window.fileRawActualHeaders1 = fileRawActualHeaders1;
+                window.fileRawActualHeaders2 = fileRawActualHeaders2;
+                window.fileRawActualData = fileRawActualData;
                 console.log('File RAW Data Updated by listener:', { headers1: fileRawActualHeaders1, headers2: fileRawActualHeaders2, dataCount: fileRawActualData.length });
             }
             filterTable(); // Perbarui tampilan tabel dengan data baru
@@ -991,7 +1005,7 @@ function updateTable(dataToDisplay) {
     const pageId = getPageId();
     const idFilter = document.getElementById('idFilter');
     const microClusterFilter = document.getElementById('microClusterFilter');
-    const nama3KioskFilter = document.getElementById('nama3KioskFilter');
+    const nama3KioskFilter = document.getElementById('nama3KioskFilter'); // Filter utama
     const kecamatanFilter = document.getElementById('kecamatanFilter');
 
     // Clear existing options except the first one
@@ -1049,6 +1063,7 @@ function updateTable(dataToDisplay) {
             });
         }
 
+        // Populate both Nama 3Kiosk filters
         if (nama3KioskFilter) {
             [...uniqueNama3Kiosk].sort().forEach(nama => {
                 const option = document.createElement('option');
@@ -1097,6 +1112,7 @@ function updateTable(dataToDisplay) {
             });
         }
 
+        // Populate Nama 3Kiosk filter for other pages
         if (nama3KioskFilter) {
             [...uniqueNama3Kiosk].sort().forEach(nama => {
                 const option = document.createElement('option');

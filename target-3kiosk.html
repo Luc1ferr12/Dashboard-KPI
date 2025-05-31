@@ -39,58 +39,56 @@
         </div>
     </header>
 
-    <main class="main-content">
-        <div class="dashboard-container">
-            <div class="filter-sidebar card">
-                <div class="filter-group">
-                    <label for="globalSearch">Cari:</label>
-                    <input type="text" id="globalSearch" class="filter-input" placeholder="Cari...">
-                </div>
-                <div class="filter-group">
-                     <label for="idFilter">Filter by ID:</label>
-                    <select id="idFilter" class="filter-select">
-                        <option value="">Semua ID</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                     <label for="microClusterFilter">Filter by Micro Cluster:</label>
-                    <select id="microClusterFilter" class="filter-select">
-                        <option value="">Semua Micro Cluster</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                     <label for="nama3KioskFilter">Filter by Nama 3Kiosk:</label>
-                    <select id="nama3KioskFilter" class="filter-select">
-                        <option value="">Semua Nama 3Kiosk</option>
-                    </select>
-                </div>
-                <button id="resetFilters" class="filter-button">Reset Filter</button>
+    <div class="dashboard-container">
+        <div class="filter-sidebar card filter-card">
+            <div class="filter-group">
+                <label for="globalSearch">Cari:</label>
+                <input type="text" id="globalSearch" class="filter-input" placeholder="Cari...">
             </div>
+            <div class="filter-group">
+                <label for="idFilter">Filter by ID:</label>
+                <select id="idFilter" class="filter-select">
+                    <option value="">Semua ID</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="microClusterFilter">Filter by Micro Cluster:</label>
+                <select id="microClusterFilter" class="filter-select">
+                    <option value="">Semua Micro Cluster</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="nama3KioskFilter">Filter by Nama 3Kiosk:</label>
+                <select id="nama3KioskFilter" class="filter-select">
+                    <option value="">Semua Nama 3Kiosk</option>
+                </select>
+            </div>
+            <button id="resetFilters" class="filter-button">Reset Filter</button>
+        </div>
 
-            <div class="table-main-area card target-table-area">
-                <div class="card-title">Target May 2025</div>
-                <div class="file-actions">
-                    <input type="file" id="fileUpload" accept=".xlsx,.xls" style="display: none;">
-                    <button id="uploadButton" onclick="document.getElementById('fileUpload').click()">Upload Excel</button>
-                    <button id="downloadExcel">Download Excel</button>
-                </div>
-                 <div class="table-container">
-                    <table id="dataTable">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nama</th>
-                                <!-- Kolom lainnya akan ditambahkan secara dinamis -->
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Data akan diisi secara dinamis -->
-                        </tbody>
-                    </table>
-                </div>
+        <div class="table-main-area card target-table-card">
+            <div class="card-title">Target May 2025</div>
+            <div class="file-actions">
+                <input type="file" id="fileUpload" accept=".xlsx,.xls" style="display: none;">
+                <button id="uploadButton" onclick="document.getElementById('fileUpload').click()">Upload Excel</button>
+                <button id="downloadExcel">Download Excel</button>
+            </div>
+            <div class="table-container">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <!-- Kolom lainnya akan ditambahkan secara dinamis -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data akan diisi secara dinamis -->
+                    </tbody>
+                </table>
             </div>
         </div>
-    </main>
+    </div>
 
     <!-- Firebase App (the core Firebase SDK) -->
     <script type="module" src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>

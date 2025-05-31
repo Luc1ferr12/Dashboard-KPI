@@ -43,10 +43,10 @@
         </div>
     </header>
 
-    <main class="main-content">
         <div class="dashboard-container">
-            <div class="filter-sidebar card">
+        <div class="filter-sidebar card filter-card">
                 <div class="filter-group">
+                <h3>(Filter Belum berfungsi)</h3>
                     <label for="globalSearch">Cari:</label>
                     <input type="text" id="globalSearch" class="filter-input" placeholder="Cari...">
                 </div>
@@ -71,7 +71,7 @@
                 <button id="resetFilters" class="filter-button">Reset Filter</button>
             </div>
 
-            <div class="table-main-area card dashboard-table-area">
+        <div class="table-main-area card dashboard-table-card">
                 <div class="card-title">3Kiosk Performance Indicative</div>
                 <div class="file-actions">
                     <button id="downloadExcel">Download Excel</button>
@@ -90,25 +90,145 @@
                         </tbody>
                     </table>
                 </div>
-                 <div class="pagination-container">
-                    <!-- Dropdown View Entries & Pagination akan ditambahkan di sini -->
-                     <label for="viewEntries">View entries:</label>
-                     <select id="viewEntries">
-                         <option value="10">10</option>
-                         <option value="25">25</option>
-                         <option value="50">50</option>
-                         <option value="100">100</option>
-                         <option value="-1">Semua</option>
-                     </select>
-                 </div>
+        </div>
+    </div>
+
+    <div class="netting-container">
+        <div class="table-main-area card netting-table-card">
+            <div class="card-title">3Kiosk Netting Est. (Under Development)</div>
+            <!-- Filter Card -->
+            <div class="netting-filter-card">
+                <div class="netting-filter-content">
+                    <div class="netting-filter-group">
+                        <label for="nettingMicroClusterFilter">Filter by Micro Cluster:</label>
+                        <select id="nettingMicroClusterFilter" class="netting-filter-select">
+                            <option value="">Semua Micro Cluster</option>
+                        </select>
+                    </div>
+                    <div class="netting-filter-group">
+                        <label for="nettingIdFilter">Filter by ID:</label>
+                        <select id="nettingIdFilter" class="netting-filter-select" disabled>
+                            <option value="">Pilih Micro Cluster terlebih dahulu</option>
+                        </select>
+                    </div>
+                    <div class="netting-filter-group">
+                        <label for="nettingNama3KioskFilter">Filter by Nama 3Kiosk:</label>
+                        <select id="nettingNama3KioskFilter" class="netting-filter-select">
+                            <option value="">Semua Nama 3Kiosk</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="netting-filter-actions">
+                    <button id="resetNettingFilters" class="netting-reset-button">Reset Filter</button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table id="dataTable2">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Parameter</th>
+                            <th rowspan="2">Target</th>
+                            <th rowspan="2">Achieve</th>
+                            <th rowspan="2">ACH%</th>
+                            <th rowspan="2">Score</th>
+                            <th rowspan="2">Multiplier</th>
+                            <th rowspan="2">Tariff</th>
+                            <th rowspan="2">Est. Netting</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Trade Demand</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>RGU GA</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>HVC</td>
+                            <td>30.000</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>15</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>MVC</td>
+                            <td>20.000</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>15</td>
+                            <td></td>
+                        </tr>
+                        <!-- Header visual untuk Tertiary B# -->
+                        <tr class="tertiary-header">
+                            <td>TERTIARY B# Parameter</td>
+                            <td>LMTD</td>
+                            <td>MTD</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td> <!-- Sel kosong merentang sisa kolom -->
+                        </tr>
+                        <tr>
+                            <td>TERTIARY B#</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>TERTIARY B# Inner</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>TERTIARY B# Outer</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </main>
+    </div>
 
     <!-- Modern browsers -->
     <script type="module" src="js/firebase.js"></script>
     <script type="module" src="js/main.js"></script>
     <script type="module" src="js/data-transfer.js"></script>
+    <script type="module" src="js/netting-filter.js"></script>
     
     <!-- Legacy browsers -->
     <script nomodule src="js/firebase.legacy.js"></script>

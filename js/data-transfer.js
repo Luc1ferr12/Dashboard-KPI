@@ -37,6 +37,17 @@ function addEventListenerIfExists(elementId, eventType, handler) {
     }
 }
 
+// Fungsi untuk memvalidasi data
+function validateData(data) {
+    if (!Array.isArray(data)) {
+        throw new Error('Data harus berupa array');
+    }
+    if (data.length < 3) {
+        throw new Error('Data tidak lengkap');
+    }
+    return true;
+}
+
 // Fungsi untuk menangani upload file
 async function handleFileUpload(event) {
     const file = event.target.files[0];
@@ -49,7 +60,19 @@ async function handleFileUpload(event) {
             return;
         }
 
-        const result = await uploadExcelFile(file, pageId);
+        // Baca file Excel
+        const data = await readExcelFile(file);
+        validateData(data);
+
+        // Proses data jika diperlukan
+        let processedData = data;
+        if (pageId === 'raw') {
+            // Jika ini adalah file RAW, proses ke format yang sesuai
+            processedData = processRawData(data);
+        }
+
+        // Upload ke Firestore
+        const result = await uploadExcelFile(processedData, pageId);
         if (result) {
             alert('File berhasil diupload');
             // Refresh data setelah upload
@@ -71,15 +94,42 @@ async function handleFileDownload() {
         }
 
         const data = await fetchExcelData(pageId);
-        if (data) {
-            await downloadExcelFile(data);
-        } else {
-            alert('Tidak ada data yang tersedia untuk diunduh');
+        if (!data) {
+            throw new Error('Tidak ada data yang tersedia');
         }
+
+        validateData(data);
+
+        // Proses data jika diperlukan
+        let processedData = data;
+        if (pageId === 'dashboard') {
+            // Jika ini adalah dashboard, pastikan format data sesuai
+            processedData = processDashboardData(data);
+        }
+
+        await downloadExcelFile(processedData);
     } catch (error) {
         console.error('Error downloading file:', error);
         alert('Gagal mengunduh file: ' + error.message);
     }
+}
+
+// Fungsi untuk memproses data RAW
+function processRawData(data) {
+    // Pastikan data memiliki header yang benar
+    if (!data[0] || !data[1]) {
+        throw new Error('Format data tidak valid');
+    }
+    return data;
+}
+
+// Fungsi untuk memproses data DASHBOARD
+function processDashboardData(data) {
+    // Pastikan data memiliki header yang benar
+    if (!data[0] || !data[1]) {
+        throw new Error('Format data tidak valid');
+    }
+    return data;
 }
 
 // Inisialisasi event listeners saat DOM sudah dimuat
